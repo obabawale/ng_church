@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record id="ng_church_offering_report_action" model="ir.actions.act_window">
+            <field name="name">Offering</field>
+            <field name="res_model">ng_church.offering_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+			<!-- <field name="view_id" ref="ng_church_offering_wizard"/> -->
+            <field name="target">new</field>
+        </record>
+
+		<record id="ng_church_tithe_report_action" model="ir.actions.act_window">
+            <field name="name">Tithe</field>
+            <field name="res_model">ng_church.tithe_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+			<!-- <field name="view_id" ref="ng_church_tithe_wizard"/> -->
+            <field name="target">new</field>
+        </record>
+
+		<record id="ng_church_attendance_report_action" model="ir.actions.act_window">
+            <field name="name">Attendance Report</field>
+            <field name="res_model">ng_church.attendance_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+		<record id="ng_church_pledge_report_action" model="ir.actions.act_window">
+            <field name="name">Pledge</field>
+            <field name="res_model">ng_church.pledge_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <!-- <field name="view_id" ref="ng_church.ng_church_pledge_wizard"/> -->
+            <field name="target">new</field>
+        </record>
+
+		<record id="ng_church_church_lodgement_action" model="ir.actions.act_window">
+			<field name="name">Church Lodgement</field>
+			<field name="res_model">ng_church.lodgement</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Church Lodgement
+				</p>
+			</field>
+		</record>
+
+		<record id="ng_church_pastor_action" model="ir.actions.act_window">
+			<field name="name">Ministers</field>
+			<field name="res_model">ng_church.pastor</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to add Minister.
+				</p>
+			</field>
+		</record>
+
+
+        <!--Church Action-->
+        <record id='ng_church_church_action' model='ir.actions.act_window'>
+            <field name='name'>Church</field>
+			<field name='res_model'>res.company</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click to add a parish.
+				</p>
+			</field>
+        </record>
+
+
+		<!--FellowShip Action-->
+        <record id='fellowship_action' model='ir.actions.act_window'>
+            <field name='name'>FellowShip</field>
+            <field name='res_model'>fellowship</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+
+        <!--Membership Status Action-->
+        <record id='membership_status_action' model='ir.actions.act_window'>
+            <field name='name'>Membership Status</field>
+            <field name='res_model'>membership.status</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <!--Church Services Action-->
+        <!-- <record id='ng_church_service_action' model='ir.actions.act_window'>
+            <field name='name'>Church Services</field>
+            <field name='res_model'>ng_church.service</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record> -->
+
+		<!--Church Services Action-->
+		<record id='ng_church_service_type_action' model='ir.actions.act_window'>
+			<field name='name'>Church Services</field>
+			<field name='res_model'>ng_church.program</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+		</record>
+
+		<!--Church Tithes Action-->
+		<record id='ng_church_tithe_action' model='ir.actions.act_window'>
+			<field name='name'>Church Tithes</field>
+			<field name='res_model'>ng_church.tithe</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+		</record>
+
+		<!--Church Offering Action-->
+		<record id='ng_church_offering_action' model='ir.actions.act_window'>
+			<field name='name'>Church Offering</field>
+			<field name='res_model'>ng_church.offering</field>
+			<field name='view_type'>form</field>
+			<field name='view_mode'>tree,form</field>
+		</record>
+
+		<!--Church Donation Action-->
+	   <record id='ng_church_donation_action' model='ir.actions.act_window'>
+		   <field name='name'>Church Donation</field>
+		   <field name='res_model'>ng_church.donation</field>
+		   <field name='view_type'>form</field>
+		   <field name='view_mode'>tree,form</field>
+	   </record>
+
+         <!--Church Pleadge Action-->
+        <record id='church_pleadge_action' model='ir.actions.act_window'>
+            <field name='name'>Church Pledge</field>
+            <field name='res_model'>ng_church.pledge</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="church_action_membership_members">
+            <field name="name">Members</field>
+            <field name="res_model">res.partner</field>
+            <field name="context">{"search_default_is_church_member": 1, "default_is_church_member": True}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="church_action_membership_members_view_tree">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="church_action_membership_members"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="church_action_membership_members_view_form">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="base.view_partner_form"/>
+            <field name="act_window_id" ref="church_action_membership_members"/>
+        </record>
+         <record model="ir.actions.act_window.view" id="church_action_membership_members_view_kanban">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="base.res_partner_kanban_view"/>
+            <field name="act_window_id" ref="church_action_membership_members"/>
+        </record>
+
+
+
+		<record model="ir.actions.act_window" id="church_action_membership_first_timer">
+            <field name="name">First Timer</field>
+            <field name="res_model">res.partner</field>
+			<field name="domain">[('membership_status_id','=',1)]</field>
+            <field name="context">{"search_default_is_church_member": 0, "default_is_church_member": False}</field>
+			<field name="view_mode">kanban</field>
+        </record>
+
+
+		<!--Church Attendance Action-->
+        <record id="ng_church_service_attendance_action" model='ir.actions.act_window'>
+            <field name='name'>Church Attendance</field>
+            <field name='res_model'>ng_church.attendance</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <!--Church Sections Action-->
+        <record id='church_sections_action' model='ir.actions.act_window'>
+            <field name='name'>Church Sections</field>
+            <field name='res_model'>church.sections</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <!--Member Ship Category Action-->
+        <record id='membership_category_action' model='ir.actions.act_window'>
+            <field name='name'>Membership Category</field>
+            <field name='res_model'>membership.category</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+        <!--Membership Type Action-->
+        <record id='membership_type_action' model='ir.actions.act_window'>
+            <field name='name'>Membership Type</field>
+            <field name='res_model'>membership.type</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+
+
+	</data>
+</odoo>

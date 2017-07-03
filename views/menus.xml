@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<!--Odoo Church Main Menu-->
+        <menuitem id="church_main_menu" name="Church Management" sequence="10" web_icon="ng_church,static/description/icon.png"/>
+
+        <!--Church Main Menu-->
+        <menuitem id="ng_church_church_main_menu" name="Church Management" parent="church_main_menu" sequence="1"/>
+        <menuitem id="ng_church_church_menu" name="Church" parent="ng_church_church_main_menu"
+			action="ng_church_church_action"/>
+
+		<menuitem id="ng_church_service_type_menu" name="Services" parent="ng_church_church_main_menu"
+					action="ng_church_service_type_action"/>
+
+		<menuitem id="ng_church_service_attendance" name="Attendance" parent="ng_church_church_main_menu"
+							action="ng_church_service_attendance_action"/>
+
+
+        <!--Odoo Church Configuration Menu-->
+        <menuitem id="church_config_menu" name="Configuration" parent="church_main_menu" sequence="50"/>
+		<!--Church Services Menu-->
+
+
+        <!--Church Structure Menu-->
+        <menuitem id="church_structure_menu" name="Church Structure" parent="church_config_menu" sequence="2"/>
+
+        <!--Church Section Menu-->
+        <menuitem id="church_sections_menu" name="Church Sections" parent="church_structure_menu" action="church_sections_action" sequence="1"/>
+        <!--Membership Config Main Menu-->
+        <menuitem id="membership_config_menu" name="Membership" parent="church_config_menu" sequence="4"/>
+
+        <!--Member Ship Category Menu-->
+        <menuitem id="membership_category_menu" name="Membership Category" parent="membership_config_menu" action="membership_category_action" sequence="1"/>
+
+        <!--FellowShip Menu-->
+        <menuitem id="fellowship_menu" name="Fellowships" parent="church_structure_menu" action="fellowship_action" sequence="3"/>
+
+         <!--Membership Type Menu-->
+        <menuitem id="membership_type_menu" name="Membership Type" parent="membership_config_menu" action="membership_type_action" sequence="2"/>
+
+        <!--Membership Status Menu-->
+        <menuitem id="membership_status_menu" name="Membership Status" parent="membership_config_menu" action="membership_status_action" sequence="3"/>
+
+                <!--Church Funds Category Menu-->
+        <menuitem id="church_funds_menu" name="Church Funds" parent="church_config_menu" sequence="2"/>
+
+
+
+            <!--Church Collection Main Menu--><!--4/5-->
+        <menuitem id="church_collection_main_menu" name="Church Collections" parent="church_main_menu" sequence="6"/>
+
+		<menuitem id="ng_church_tithes_menu" name="Tithes" parent="church_collection_main_menu"
+			action="ng_church_tithe_action"/>
+
+		<menuitem id="ng_church_offering_menu" name="Offering" parent="church_collection_main_menu"
+				action="ng_church_offering_action"/>
+				<!--Church Donation Menu--><!--4/5-->
+	    <menuitem id="ng_church_donation_menu" name="Donations" parent="church_collection_main_menu"
+			action="ng_church_donation_action"/>
+
+		<menuitem id="ng_church_pledges_menu" name="Pledges" parent="church_collection_main_menu"
+			action="church_pleadge_action"/>
+			<!--Church lodgement Action  -->
+	 	 <menuitem id="ng_church_church_logement_menu"
+	 		   action="ng_church_church_lodgement_action" parent="church_collection_main_menu"/>
+
+
+
+        <!--Odoo Church Membership Menu-->
+        <menuitem id="church_membership_menu" name="Church Members" parent="church_main_menu" sequence="4"/>
+        <!--Church Membership Sub Menu-->
+		<menuitem id="ng_church_pastor_menu" name="Ministers" parent="church_membership_menu"
+				action="ng_church_pastor_action"/>
+
+        <menuitem id="church_membership_sub_menu" name="Members" parent="church_membership_menu"
+			action="church_action_membership_members"/>
+
+		<menuitem id="church_membership_first_timer_sub_menu" name="First Timers" parent="church_membership_menu"
+				action="church_action_membership_first_timer"/>
+
+        <!--Odoo Church Reporting Menu-->
+        <menuitem id="ng_church_reporting_menu" name="Reporting" parent="church_main_menu"/>
+		<menuitem id="ng_church_attendance_report" name="Attendance" parent="ng_church_reporting_menu" action="ng_church_attendance_report_action"/>
+		<menuitem id="ng_church_collection_report" name="Church Collections" parent="ng_church_reporting_menu"/>
+        <menuitem id="church_tithe_report_menu" name="Tithes" parent="ng_church_collection_report" action="ng_church_tithe_report_action"/>
+		<menuitem id="church_offering_report_menu" name="Offering" parent="ng_church_collection_report" action="ng_church_offering_report_action"/>
+		<menuitem id="church_donation_report_menu" name="Donation" parent="ng_church_collection_report" action="ng_church_pledge_report_action"/>
+		<menuitem id="church_pledge_report_menu" name="Pledge" parent="ng_church_collection_report" action="ng_church_pledge_report_action"/>
+        <!--Training Main Menu-->
+        <menuitem id="campaign_growth_main_menu" name="Church Growth" parent="church_main_menu"/>
+        <!--Training Sub Menu-->
+        <menuitem id="training_sub_menu" name="Events" parent="campaign_growth_main_menu" action="event.action_event_view" sequence="1"/>
+        <menuitem id="training_registration_menu" name="Events Registration" parent="campaign_growth_main_menu" sequence="2" action="event.action_registration"/>
+
+        <!--Church Events Configuration Menu-->
+        <menuitem id="church_event_config_main_menu" name="Church Events" parent="church_config_menu"/>
+        <!--Events Types Configuration Menu-->
+        <menuitem id="training_type_config_menu"
+                  name="Events Types"
+                  parent="church_event_config_main_menu"
+                  action="event.action_event_type"/>
+
+        <!--Church Growth Main Menu-->
+
+        <!--Followup Menu-->
+        <menuitem id="followup_menu"
+                  name="Followup"
+                  parent="campaign_growth_main_menu"
+                  action="marketing_campaign.action_marketing_campaign_workitem"/>
+        <!--Growth Segment Menu-->
+        <menuitem id="growth_segment_menu"
+                  name="Growth Segment"
+                  parent="campaign_growth_main_menu"
+                  action="marketing_campaign.action_marketing_campaign_segment_form"/>
+        <!--Growth Campaign Menu-->
+        <menuitem id="growth_campaign_menu"
+                  name="Growth Campaign"
+                  parent="campaign_growth_main_menu"
+                  action="marketing_campaign.action_marketing_campaign_form"/>
+
+	</data>
+</odoo>

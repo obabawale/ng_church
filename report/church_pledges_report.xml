@@ -1,0 +1,37 @@
+<odoo>
+<data>
+
+    <template id="church_pledges_report">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <t t-foreach="presenter(doc)" t-as="pledge">
+                            <h3 class="text-center" style="text-transform:uppercase"><b><u><span t-field="pledge.name.name"/></u></b></h3>
+                        </t>
+                        <table class="table table-condensed">
+                            <tr class="row">
+                                <td>Name</td>
+                                <td>Pledge Amount</td>
+                                <td>Amount Paid</td>
+                                <td>Total Balance</td>
+                            </tr>
+                            <t t-foreach="presenter(doc)" t-as="pledge">
+                                <t t-foreach="pledge.pledge_line_ids" t-as="pledges">
+                                    <tr class="row">
+                                        <td><span t-field="pledges.pledger.name"/></td>
+                                        <td><span t-field="pledges.amount"/></td>
+                                        <td><span t-field="pledges.paid"/></td>
+                                        <td><span t-field="pledges.balance"/></td>
+                                     </tr>
+                                </t>
+
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</data>
+</odoo>

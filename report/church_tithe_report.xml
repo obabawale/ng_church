@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="church_tithe_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs[0]" t-as="doc">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h2 class="text-center" style="text-transform:uppercase">TITHES REPORT</h2>
+                            <h5 class="text-center" style="text-transform:uppercase"><u><span t-field="user.company_id"/></u></h5>
+                            <table class="table table-condensed">
+                               <tr class="row">
+                                   <td>Date</td>
+                                   <td>Category</td>
+                                   <td>Name</td>
+                                   <td>Amount</td>
+                               </tr>
+                               <t t-foreach="docs" t-as="tithes">
+                                    <tr class="row">
+                                        <td><span t-field="tithes.date"/></td>
+                                        <td><span t-field="tithes.tithe_type"/></td>
+                                        <td><span t-field="tithes.tither"/></td>
+                                        <td><span t-field="tithes.amount"/></td>
+                                    </tr>
+                               </t>
+                                   <tr class="row">
+                                       <td></td>
+                                       <td></td>
+                                       <td><b>Total</b></td>
+                                       <td><b t-esc="tithe_caculator(docs)"/></td>
+                                   </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

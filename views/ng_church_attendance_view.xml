@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<!--Annual Attendace View  -->
+        <record id="ng_church_attendance_search_view" model="ir.ui.view">
+			<field name="name">Attendance Record Search View</field>
+			<field name="model">ng_church.attendance</field>
+			<field name="arch" type="xml">
+				<search>
+					<filter string="Partner" context="{'group_by':'parish_id'}"/>
+					<filter string="Parish" name="parish_id" domain="[('parish_id', '=', 2)]"/>
+				</search>
+			</field>
+		</record>
+
+        <!--Annual Attendace Tree View  -->
+        <record id="ng_church_attendance_tree_view" model="ir.ui.view">
+			<field name="name">Anual Attendance Record Tree View</field>
+			<field name="model">ng_church.attendance</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="date"/>
+				</tree>
+			</field>
+		</record>
+
+		<!--  attendance form view -->
+		<record id="ng_church_attendance_view" model="ir.ui.view">
+			<field name="name">ng_church_attendance_form_view</field>
+			<field name="model">ng_church.attendance</field>
+			<field name="arch" type='xml'>
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+						<group>
+							<field name="date"/>
+							<field name="parish_id" invisible="1"/>
+						</group>
+
+						</group>
+						<notebook>
+							<page string="Attendance Record">
+								<field name="attendance_line_ids"/>
+							</page>
+					  </notebook>
+
+					</sheet>
+				</form>
+			</field>
+        </record>
+
+        <!--  Attendace Line View -->
+        <record id="ng_church_monthly_attendance_line_tree_view" model="ir.ui.view">
+			<field name="name"> Attendance Line Tree View</field>
+			<field name="model">ng_church.attendance_line</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="section_id"/>
+					<field name="male"/>
+					<field name="female"/>
+					<field name="guest"/>
+					<field name="children"/>
+					<field name="total"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Attendace line form view -->
+		<record id="ng_church_monthly_attendance_view" model="ir.ui.view">
+			<field name="name">Attendance Line Form View</field>
+			<field name="model">ng_church.attendance_line</field>
+			<field name="arch" type='xml'>
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="date"/>
+								<field name="section_id"/>
+								<field name="name" invisible="1"/>
+						    </group>
+							<group attrs="{'invisible':[('section_id', '=',1)]}">
+	                            <field name="male"/>
+	                            <field name="female"/>
+								<field name="guest"/>
+							</group>
+							<group attrs="{'invisible':[('section_id', '!=',1)]}">
+	                            <field name="children"/>
+							</group>
+							<group class="oe_right">
+							<field name="total" class="oe_right" readonly="1"/>
+						</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+        </record>
+	</data>
+</odoo>

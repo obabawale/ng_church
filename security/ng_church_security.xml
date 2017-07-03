@@ -1,0 +1,100 @@
+<odoo>
+    <data>
+        <record model="ir.module.category" id="ng_church_access_rule_category">
+            <field name="name">Church Management</field>
+            <field name="sequence">202</field>
+        </record>
+
+        <record id="parish_pastor" model="res.groups">
+            <field name="name">Pastor</field>
+            <field name="category_id" ref="ng_church_access_rule_category"/>
+       </record>
+
+       <record id="accountant" model="res.groups">
+           <field name="name" >Accountant</field>
+           <field name="category_id" ref="ng_church_access_rule_category"/>
+      </record>
+
+      <record id="head_usher" model="res.groups">
+           <field name="name" >Usher</field>
+           <field name="category_id" ref="ng_church_access_rule_category"/>
+      </record>
+
+      <record id="church_administrator" model="res.groups">
+          <field name="name" >Administrator</field>
+          <field name="category_id" ref="ng_church_access_rule_category"/>
+      </record>
+
+
+        <record id="ng_church_donation" model="ir.rule">
+            <field name="name">Church Donation multi-company</field>
+            <field name="model_id" ref="model_ng_church_donation"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_tithe" model="ir.rule">
+            <field name="name">Church Tithe multi-company</field>
+            <field name="model_id" ref="model_ng_church_tithe"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_offering" model="ir.rule">
+            <field name="name">Church Offering multi-company</field>
+            <field name="model_id" ref="model_ng_church_offering"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_pledge" model="ir.rule">
+            <field name="name">Church Pledge multi-company</field>
+            <field name="model_id" ref="model_ng_church_pledge"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_lodgement" model="ir.rule">
+            <field name="name">Church Lodgement multi-company</field>
+            <field name="model_id" ref="model_ng_church_lodgement"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_lodgement" model="ir.rule">
+            <field name="name">Church Lodgement multi-company</field>
+            <field name="model_id" ref="model_ng_church_lodgement"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_attendance" model="ir.rule">
+            <field name="name">Church Attendance multi-company</field>
+            <field name="model_id" ref="model_ng_church_attendance"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('parish_id','=',False),('parish_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_attendance" model="ir.rule">
+            <field name="name">Church Attendance multi-company</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('parish_id','=',False),('parish_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_program" model="ir.rule">
+            <field name="name">Church Program multi-company</field>
+            <field name="model_id" ref="model_ng_church_program"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('parish_id','=',False),('parish_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ng_church_pastor" model="ir.rule">
+            <field name="name">Church Pastor multi-company</field>
+            <field name="model_id" ref="model_ng_church_pastor"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('church_id','=',False),('church_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,349 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record id="view_church_guarantor_form" model="ir.ui.view">
+            <field name="name">church.guarantor.form</field>
+            <field name="model">church.guarantor</field>
+            <field name="arch" type="xml">
+                <form string="Guarantor">
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="gender" />
+                            <field name="tel1" />
+                            <field name="email" />
+                            <field name="status" />
+                        </group>
+                        <group>
+                            <field name="lname" />
+                            <field name="marital" />
+                            <field name="tel2" />
+                            <field name="rel" />
+                            <field name="employer" attrs="{'invisible':[('status','=','u')]}" />
+                        </group>
+                    </group>
+                    <group colspan="4">
+                        <field name="home" placeholder="Add home address..."/>
+                        <field name="office" placeholder="Add office address..."/>
+                        <field name="notes" placeholder="Add internal notes..."/>
+                        <field name="state" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_church_guarantor_tree" model="ir.ui.view">
+            <field name="name">guarantor.tree</field>
+            <field name="model">church.guarantor</field>
+            <field name="arch" type="xml">
+                <tree string="Guarantor">
+                    <field name="name" />
+                    <field name="lname" />
+                    <field name="gender" />
+                    <field name="marital" />
+                    <field name="email" />
+                    <field name="tel1" />
+                    <field name="tel2" />
+                    <field name="status" />
+                    <field name="state" />
+                    <field name="emp_id" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_church_guarantor_search" model="ir.ui.view">
+            <field name="name">guarantor.search</field>
+            <field name="model">church.guarantor</field>
+            <field name="arch" type="xml">
+                <search string="Guarantor">
+                    <field name="emp_id" invisible="0" />
+                    <field name="name" />
+                    <field name="lname" />
+                    <field name="gender" />
+                    <field name="marital" />
+                    <field name="email" />
+                    <field name="tel1" />
+                    <field name="tel2" />
+                    <field name="status" />
+                    <field name="state" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Member" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'emp_id'}" />
+                        <filter string="Marital" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'marital'}" />
+                        <filter string="Gender" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'gender'}" />
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'status'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_gua" model="ir.actions.act_window">
+            <field name="name">Guarantors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">church.guarantor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem sequence="5" id="church_members_contact_menu" parent="church_config_menu" name="Members Contacts" />
+        <menuitem action="action_gua" sequence="1" id="church_gua_menu" parent="church_members_contact_menu" name="Guarantors" />
+
+        <record id="view_church_refs_form" model="ir.ui.view">
+            <field name="name">church.church_refs.form</field>
+            <field name="model">church.refs</field>
+            <field name="arch" type="xml">
+                <form string="References">
+                    <header>
+                        <button name="verify" string="Verify" type="object" states="not_verify" class="oe_highlight" groups="base.group_hr_user" />
+                        <button name="notverify" string="Reset to Not Verify" type="object" states="verify" groups="base.group_hr_user" />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="gender" />
+                            <field name="tel1" />
+                            <field name="email" />
+                            <field name="user" />
+                        </group>
+                        <group>
+                            <field name="lname" />
+                            <field name="marital" />
+                            <field name="tel2" />
+                            <field name="rel" />
+                            <field name="status" />
+                        </group>
+                    </group>
+                    <group colspan="4">
+                        <field name="employer" attrs="{'invisible':[('status','=','u')]}" />
+                        <field name="home" placeholder="Add home address..." />
+                        <field name="office" placeholder="Add office address..."/>
+                        <field name="notes" placeholder="Add internal notes..." />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_church_refs_tree" model="ir.ui.view">
+            <field name="name">church.refs.tree</field>
+            <field name="model">church.refs</field>
+            <field name="arch" type="xml">
+                <tree string="References">
+                    <field name="name" />
+                    <field name="lname" />
+                    <field name="gender" />
+                    <field name="marital" />
+                    <field name="email" />
+                    <field name="tel1" />
+                    <field name="tel2" />
+                    <field name="status" />
+                    <field name="state" />
+                    <field name="emp_id" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_church_refs_search" model="ir.ui.view">
+            <field name="name">church.refs.search</field>
+            <field name="model">church.refs</field>
+            <field name="arch" type="xml">
+                <search string="References">
+                    <field name="emp_id" invisible="0" />
+                    <field name="name" />
+                    <field name="lname" />
+                    <field name="gender" />
+                    <field name="marital" />
+                    <field name="email" />
+                    <field name="tel1" />
+                    <field name="tel2" />
+                    <field name="status" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Member" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'emp_id'}" />
+                        <filter string="Marital" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'marital'}" />
+                        <filter string="Gender" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'gender'}" />
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'status'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_ref" model="ir.actions.act_window">
+            <field name="name">Member References</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">church.refs</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_ref" sequence="2" id="church_ref_menu" parent="church_members_contact_menu" name="References" />
+
+        <record id="view_church_nextofkin_form" model="ir.ui.view">
+            <field name="name">church.nextofkin.form</field>
+            <field name="model">church.nextofkin</field>
+            <field name="arch" type="xml">
+                <form string="Next of kins">
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="gender" />
+                            <field name="tel1" />
+                            <field name="email" />
+                            <field name="status" />
+                        </group>
+                        <group>
+                            <field name="lname" />
+                            <field name="marital" />
+                            <field name="tel2" />
+                            <field name="rel" />
+                            <field name="employer" attrs="{'invisible':[('status','=','u')]}" />
+                        </group>
+                    </group>
+                    <group colspan="4">
+                        <field name="home" placeholder="Add home address..." />
+                        <field name="office" placeholder="Add office address..." />
+                        <field name="notes" placeholder="Add internal notes..." />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_church_nextofkin_tree" model="ir.ui.view">
+            <field name="name">church.nextofkin.tree</field>
+            <field name="model">church.nextofkin</field>
+            <field name="arch" type="xml">
+                <tree string="Next of kins">
+                    <field name="name" />
+                    <field name="lname" />
+                    <field name="gender" />
+                    <field name="marital" />
+                    <field name="email" />
+                    <field name="tel1" />
+                    <field name="tel2" />
+                    <field name="status" />
+                    <field name="emp_id" invisible="1" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_church_nextofkin_search" model="ir.ui.view">
+            <field name="name">church.nextofkin.search</field>
+            <field name="model">church.nextofkin</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Next of kins">
+                    <field name="emp_id" invisible="0" />
+                    <field name="name" />
+                    <field name="lname" />
+                    <field name="gender" />
+                    <field name="marital" />
+                    <field name="email" />
+                    <field name="tel1" />
+                    <field name="tel2" />
+                    <field name="status" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Member" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'emp_id'}" />
+                        <filter string="Marital" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'marital'}" />
+                        <filter string="Gender" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'gender'}" />
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'status'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_kin" model="ir.actions.act_window">
+            <field name="name">Next of kins</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">church.nextofkin</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_kin" sequence="3" id="church_kin_menu" parent="church_members_contact_menu" name="Next of Kin" />
+
+
+        <record model="ir.ui.view" id="view_partner_membership_form">
+            <field name="name">res.partner.membership.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[3]/group/group[2]/field[@name='supplier']" position="after">
+                    <field name="is_preacher"/>
+                </xpath>
+                <xpath expr="//field[@name='website']" position="after"><!--4/5-->
+                    <field name="member_uniq_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//page[@name='internal_notes']" position="before">
+                    <page string="Church Membership">
+                        <group>
+                            <group string="Membership">
+                                <field name="membership_status_id"/>
+                                <field name="membership_category_id"/>
+                                <field name="membership_type_id"/>
+                                <field name="joined_date"/>
+                            </group>
+                            <group string="Role">
+                                <field name="parish_id"/>
+                                <field name="is_pastor"/>
+                                <field name="is_church_member"/>
+                            </group>
+                        </group>
+                        <separator string="Faith Level"/>
+                        <group>
+                            <group>
+                                <field name="is_born_again"/>
+                                <field name="born_again_date" attrs="{'invisible':[('is_born_again','=',False)]}"/>
+                            </group>
+                            <group>
+                                <field name="is_spirit_filled"/>
+                                <field name="spirit_filled_date" attrs="{'invisible':[('is_spirit_filled','=',False)]}"/>
+                            </group>
+                        </group>
+                        <separator string="Other Information"/>
+                        <group>
+                            <group>
+                                <!-- <field name="related_employee_id"/> -->
+                                <field name="dob"/>
+                            </group>
+                            <group>
+                                <field name="church_section_id"/>
+                                <field name="fellowship_id"/>
+                            </group>
+                        </group>
+                    </page>
+                        <page string="References">
+                            <group col="4" colspan="4">
+                                <separator string="References" colspan="4" />
+                                <field name="ref_ids" nolabel="1" colspan="4" context="{'default_customer':0, 'default_supplier': 0}" />
+                            </group>
+                        </page>
+                        <page string="Guarantors">
+                            <group col="4" colspan="4">
+                                <separator string="Guarantors" colspan="4" />
+                                <field name="gua_ids" nolabel="1" colspan="4" context="{'default_customer':0, 'default_supplier': 0}" />
+                            </group>
+                        </page>
+                        <page string="Next of Kin">
+                            <group col="4" colspan="4">
+                                <separator string="Next of Kin" colspan="4" />
+                                <field name="kin_ids" nolabel="1" colspan="4" context="{'default_customer':0, 'default_supplier': 0}" />
+                            </group>
+                        </page>
+
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Partner Kanban View Inherit for Adding MemberID-->
+        <record model="ir.ui.view" id="res_partner_kanban_view_member_id">
+            <field name="name">res.partner.member.id.kanban</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//li[6]" position="after">
+                    <li t-if="record.member_uniq_id.raw_value"  style="color:#006400;"><field name="member_uniq_id"/></li>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ng_church_pledge_wizard" model="ir.ui.view">
+            <field name="name">church.pledge.wizard.form</field>
+            <field name="model">ng_church.pledge_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Church Pledges">
+                    <group>
+                         <group>
+                            <field name="pledge"/>
+                        </group>
+                        <group/>
+                    </group>
+	                <footer>
+                        <button name="check_report" string="Print" type="object" class="oe_highlight"/>
+	                    or <button special="cancel" string="Cancel" class="oe_link"/>
+	                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="ng_church_attendance_wizard" model="ir.ui.view">
+            <field name="name">ng_church_attendance_wizard</field>
+            <field name="model">ng_church.attendance_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Church Pledges">
+                    <group>
+                        <group>
+                           <field name="date_from"/>
+                       </group>
+                         <group>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+                            <field name="attendance" class="oe_center" width="100%"/>
+                        </group>
+                        <group/>
+                    </group>
+                   <footer>
+                        <button name="check_report" string="Print" type="object" class="oe_highlight"/>
+                       or <button special="cancel" string="Cancel" class="oe_link"/>
+                   </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="ng_church_tithe_wizard" model="ir.ui.view">
+            <field name="name">ng_church_tithe_wizard</field>
+            <field name="model">ng_church.tithe_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Church Pledges">
+                    <group>
+                        <group>
+                           <field name="date_from"/>
+                       </group>
+                         <group>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+                            <field name="tithe" class="oe_center"/>
+                        </group>
+                        <group/>
+                    </group>
+                   <footer>
+                        <button name="check_report" string="Print" type="object" class="oe_highlight"/>
+                       or <button special="cancel" string="Cancel" class="oe_link"/>
+                   </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="ng_church_offering_wizard" model="ir.ui.view">
+            <field name="name">ng_church_offering_wizard</field>
+            <field name="model">ng_church.offering_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                           <field name="date_from"/>
+                       </group>
+                         <group>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+                            <field name="offering" class="oe_center"/>
+                        </group>
+                        <group/>
+                    </group>
+                   <footer>
+                        <button name="check_report" string="Print" type="object" class="oe_highlight"/>
+                       or <button special="cancel" string="Cancel" class="oe_link"/>
+                   </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+
+    <template id="church_attendance_report">
+        <t t-call="report.html_container">
+            <t t-foreach="attendance_line_mutator(docs)[-1]" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <h2 class="text-center" style="text-transform:uppercase">ATTENDANCE REPORT</h2>
+                        <h5 class="text-center" style="text-transform:uppercase"><u><span t-field="doc.attendance_id.name"/></u></h5>
+                        <table class="table table-condensed">
+                            <tr class="row">
+                                <td>Date</td>
+                                <td>Male</td>
+                                <td>Female</td>
+                                <td>Children</td>
+                                <td>Guest</td>
+                                <td>Total</td>
+                            </tr>
+                         <t t-foreach="attendance_line_mutator(docs)[0]" t-as="line">
+                            <tr class="row">
+                                <td>
+                                    <t t-if="line.name">
+                                        <span t-field="line.name"/>
+                                    </t>
+                                 </td>
+                                <td>
+                                    <t t-if="line.male">
+                                        <span t-field="line.male"/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="line.female">
+                                        <span t-field="line.female"/>
+                                     </t>
+                                </td>
+                                <td>
+                                    <t t-if="line.children">
+                                        <span t-field="line.children"/>
+                                     </t>
+                                 </td>
+                                <td>
+                                    <t t-if="line.guest">
+                                        <span t-field="line.guest"/>
+                                     </t>
+                                 </td>
+                                <td><span t-esc="line.total"/></td>
+                            </tr>
+                        </t>
+                        <tr class="row">
+                            <t t-foreach="attendance_census(docs)" t-as="population">
+                                <td><span t-esc="population"/></td>
+                            </t>
+                        </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</data>
+</odoo>

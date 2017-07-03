@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="account_invoice_view_church">
+            <field name="name">inherited accoount.invoice.church</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="church_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='date_invoice']" position="after">
+                    <!-- <field name="church_section_id"/>
+                    <field name="fee_category_id"/>
+                    <field name="church_service_id"/> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_account_line_view_church">
+            <field name="name">account_account_line_view_church</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page" position="replace">
+                    <page string="Journal Items">
+                        <field name="line_ids" widget="one2many_list" context="{'line_ids': line_ids, 'journal_id': journal_id }">
+                            <tree editable="bottom" string="Journal Items">
+                                <field name="account_id" domain="[('company_id', '=', parent.company_id), ('deprecated', '=', False), ('user_type_id', '=', 3)]]"/>
+                                <field name="partner_id" domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]"/>
+                                <field name="name"/>
+                                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                                <field name="amount_currency" groups="base.group_multi_currency"/>
+                                <field name="company_currency_id" invisible="1"/>
+                                <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency"/>
+                                <field name="debit" sum="Total Debit"/>
+                                <field name="credit" sum="Total Credit"/>
+                                <field name="date_maturity" required="0"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

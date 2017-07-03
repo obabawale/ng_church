@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="inherited_res_company_view_form">
+            <field name="name">inherited res.comapany form view</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div/h3/field[@name ='rml_header1']" position="replace">
+                    <field name="rml_header1" placeholder="e.g No God - No Peace. Know God - Know Peace."/>
+                </xpath>
+                <!--hide default partner readonly field.  -->
+                <xpath expr="//notebook/page/group/group/field[@name='partner_id']" position="replace">
+                    <field name="partner_id" readonly="1" required="0" groups="base.group_no_one" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Pastor Information" name="pastor">
+                        <field name="pastor_id" readonly="1"/>
+                    </page>
+                    <page string="Accounting">
+                        <group>
+                            <group string="Tithes">
+                                <field name="tithe_journal"/>
+                                <field name="tithe_account"/>
+                            </group>
+                            <group string="Donations">
+                                <field name="donation_journal"/>
+                                <field name="donation_account"/>
+                            </group>
+                            <group string="Offerings">
+                                <field name="offering_journal"/>
+                                <field name="offering_account"/>
+                            </group>
+                            <group string="Pledges">
+                                <field name="pledge_journal"/>
+                                <field name="pledge_account"/>
+                            </group>
+                            <group string="Transit Account">
+                                <field name="transit_account"/>
+                            </group>
+                    </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

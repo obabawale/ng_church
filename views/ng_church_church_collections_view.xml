@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--pledge payment line form view  -->
+        <record id="ng_church_pledge_line_payment_form_view" model="ir.ui.view">
+            <field name="name">ng_church_pledge_lines_form_view</field>
+            <field name="model">ng_church.pledge_line_payment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="amount" widget="monetary"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--pledge payment line tree view  -->
+        <record id="ng_church_pledge_line_payment_tree_view" model="ir.ui.view">
+            <field name="name">ng_church_pledge_lines_tree_view</field>
+            <field name="model">ng_church.pledge_line_payment</field>
+            <field name="arch" type="xml">
+                <tree default_order="desc" editable="bottom">
+                    <field name="date"/>
+                    <field name="amount" widget="monetary"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--pledge line tree view  -->
+        <record id="ng_church_pledge_lines_tree_view" model="ir.ui.view">
+            <field name="name">ng_church_pledge_lines_tree_view</field>
+            <field name="model">ng_church.pledge_line</field>
+            <field name="arch" type="xml">
+                <tree default_order="desc">
+                    <field name="date"/>
+                    <field name="pledger"/>
+                    <field name="state"/>
+                    <field name="amount" widget="monetary"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Church Pleadge Form View-->
+         <record id="church_pleadge_line_form" model="ir.ui.view">
+             <field name='name'>church_pleadge_line_form</field>
+             <field name='model'>ng_church.pledge_line</field>
+             <field name='type'>form</field>
+             <field name='arch' type='xml'>
+                 <form string="Church Pledge lines">
+                 <header>
+                     <field name="state" widget='statusbar'/>
+                     <button name="print_report" string='Pledge Balance' type='object' class="oe_highlight"/>
+                     <button name="send_by_email" string='Send By Email' type='object' class="oe_highlight"/>
+
+                 </header>
+                 <sheet>
+                     <button name="generate_pledge_voucher" string="Generate Voucher" class="oe_highlight oe_right" type="object"
+                         attrs="{'invisible':[('state', '!=', 'fulfilled')]}" groups="ng_church.church_administrator"/>
+                     <group>
+                         <group>
+                             <field name="date"/>
+                             <field name="due"/>
+                         </group>
+                         <group>
+                             <field name="pledger"/>
+                             <field name="amount" widget="monetary"/>
+                         </group>
+                         <field name="pledge_line_payment_ids" nolabel="1"/>
+                         <group class="oe_right">
+                             <field name="paid" readonly="1"/>
+                             <field name="balance" readonly="1"/>
+                         </group>
+                     </group>
+                 </sheet>
+                 </form>
+             </field>
+         </record>
+
+        <!--Church Pleadge Form View-->
+         <record id="church_pleadge_form" model="ir.ui.view">
+             <field name='name'>church.pledge.form</field>
+             <field name='model'>ng_church.pledge</field>
+             <field name='type'>form</field>
+             <field name='arch' type='xml'>
+                 <form string="Church Pledge">
+                 <sheet>
+                     <group>
+                         <group>
+                             <field name="name"/>
+                         </group>
+                         <group>
+                             <field name="date"/>
+                         </group>
+                     </group>
+                     <notebook>
+                         <page string="Pledges">
+                             <field name="pledge_line_ids">
+                                 <tree default_order="desc">
+                                     <field name="date"/>
+                                     <field name="pledger"/>
+                                     <field name="state"/>
+                                     <field name="amount" widget="monetary"/>
+                                 </tree>
+                             </field>
+                         </page>
+                     </notebook>
+                 </sheet>
+                 </form>
+             </field>
+         </record>
+
+         <!--Church Pleadge Tree View-->
+          <record id='church_pleadge_search' model='ir.ui.view'>
+              <field name='name'>church.pledge.search</field>
+              <field name='model'>ng_church.pledge_line</field>
+              <field name='type'>search</field>
+              <field name='arch' type='xml'>
+                  <search string='Church Pledge'>
+                      <field name="name"/>
+                  </search>
+              </field>
+          </record>
+
+         <!--Church Pleadge Tree View-->
+         <record id='church_pleadge_tree' model='ir.ui.view'>
+             <field name='name'>church.pledge.tree</field>
+             <field name='model'>ng_church.pledge</field>
+             <field name='type'>tree</field>
+             <field name='arch' type='xml'>
+                 <tree>
+                     <field name="name"/>
+                 </tree>
+             </field>
+         </record>
+
+        <!--Church Pleadge Tree View-->
+         <record id='church_pleadge_search' model='ir.ui.view'>
+             <field name='name'>church.pledge.search</field>
+             <field name='model'>ng_church.pledge</field>
+             <field name='type'>search</field>
+             <field name='arch' type='xml'>
+                 <search string='Church Pledge'>
+                     <field name="name"/>
+                 </search>
+             </field>
+         </record>
+
+
+
+        <!--Tree View  -->
+        <record id="ng_church_tithe_lines_tree_view" model="ir.ui.view">
+            <field name="name">Church Tithes Line Tree View</field>
+            <field name="model">ng_church.tithe_lines</field>
+            <field name="arch" type="xml">
+                <tree colors="grey:is_invoiced==True" default_order="desc">
+                    <field name="name"/>
+                    <field name="tithe_type"/>
+                    <field name="tither"/>
+                    <field name="amount"/>
+                    <field name="is_invoiced" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ng_church_tithe_line_form_view" model="ir.ui.view">
+            <field name="name">Church Tithe Line Form View</field>
+            <field name="model">ng_church.tithe_lines</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <header>
+                        <button name="generate_tithe_voucher" string="Generate Voucher" class="oe_highlight oe_right" type="object"
+                            attrs="{'invisible':[('is_invoiced', '=', True)]}"/>
+                    </header>
+
+                        <group>
+                            <field name="date"/>
+                            <field name="name" invisible="1"/>
+                            <field name="tithe_type"/>
+                            <field name="tither" attrs="{'invisible':[('tithe_type', '=', 'members')]}"/>
+                            <field name="is_invoiced" invisible="1"/>
+
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="ng_church_tithe_form_view" model="ir.ui.view">
+            <field name="name">Church Tithes Form View</field>
+            <field name="model">ng_church.tithe</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="service_id"/>
+                                <field name="section_id"/>
+                            </group>
+                    </group>
+                    <notebook>
+                        <page string="Church Tithes">
+                            <field name="tithe_line_ids"/>
+                        </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Tree View  -->
+        <record id="ng_church_tithe_tree_view" model="ir.ui.view">
+            <field name="name">Church Tithes Tree View</field>
+            <field name="model">ng_church.tithe</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="section_id"/>
+                    <field name="service_id"/>
+                    <field name="pastor_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Tithe Search View  -->
+        <record id="ng_church_tithe_search_view" model="ir.ui.view">
+            <field name="name">Church Tithes Search View</field>
+            <field name="model">ng_church.tithe</field>
+            <field name="arch" type="xml">
+                <search colors="gray:is_invoiced==True">
+                    <field name="name"/>
+                    <filter string="Invoiced" domain="[('is_invoiced', '=', True)]"/>
+                    <separator/>
+                    <filter string="Pastor's Tithes" domain="[('is_pastor_tithe', '=', True)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!--Church offering lines view  -->
+        <record id="ng_church_offering_lines_form_view" model="ir.ui.view">
+            <field name="name">ng_church_offering_lines_form_view</field>
+            <field name="model">ng_church.offering_line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <header>
+                        <button name="generate_offering_voucher" string="Generate Voucher" class="oe_highlight oe_right" type="object"
+                            attrs="{'invisible':[('is_invoiced', '=', True)]}"/>
+                    </header>
+
+                        <group>
+                            <field name="date"/>
+                            <field name="name" invisible="1"/>
+                            <field name="is_invoiced" invisible="1"/>
+
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+       <!--Tree View  -->
+       <record id="ng_church_offering_lines_tree_view" model="ir.ui.view">
+           <field name="name">ng_church_offering_lines_tree_view</field>
+           <field name="model">ng_church.offering_line</field>
+           <field name="arch" type="xml">
+               <tree default_order="desc">
+                   <field name="name"/>
+                   <field name="amount"/>
+               </tree>
+           </field>
+       </record>
+
+
+        <!--Church offering View  -->
+        <record id="ng_church_offering_form_view" model="ir.ui.view">
+            <field name="name">Church Offering Form View</field>
+            <field name="model">ng_church.offering</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="service_id"/>
+                                <field name="section_id"/>
+                             </group>
+                         </group>
+                            <notebook>
+                                <page string="Offering" name="offering">
+                                   <field name="offering_line_ids"/>
+                               </page>
+
+                            </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Tree View  -->
+        <record id="ng_church_offering_tree_view" model="ir.ui.view">
+            <field name="name">Church Offering Tree View</field>
+            <field name="model">ng_church.offering</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="service_id"/>
+                    <field name="section_id"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--Church Donation Form View-->
+        <record id="church_donation_form" model="ir.ui.view">
+            <field name='name'>Church Donation Form View</field>
+            <field name='model'>ng_church.donation</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form string="Donation">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="start_date"/>
+                        </group>
+                        <group>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page>
+                            <field name="donation_line_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Church Donation Tree View-->
+        <record id='church_donation_tree' model='ir.ui.view'>
+            <field name='name'>Church Donation Tree View</field>
+            <field name='model'>ng_church.donation</field>
+            <field name='type'>tree</field>
+            <field name='arch' type='xml'>
+                <tree string='Donation' name="donation">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name='notes'/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--Church Donation line Form View-->
+        <record id="church_donation_line_form" model="ir.ui.view">
+            <field name='name'>church_donation_line_form</field>
+            <field name='model'>ng_church.donation_line</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form string="Donation">
+                <sheet>
+                    <header>
+                        <button name="generate_donation_voucher"
+                                string="Generate Voucher"
+                                class="oe_highlight oe_right"
+                                type="object"
+                                attrs = "{'invisible':[('is_invoiced', '=', True)]}"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="name" invisible="1"/>
+                            <field name="donor_id"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="is_invoiced" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Church Donation Tree View-->
+        <record id='church_donation_line_tree' model='ir.ui.view'>
+            <field name='name'>church_donation_line_tree</field>
+            <field name='model'>ng_church.donation_line</field>
+            <field name='type'>tree</field>
+            <field name='arch' type='xml'>
+                <tree default_order="desc">
+                    <field name="name"/>
+                    <field name="donor_id"/>
+                    <field name='amount'/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

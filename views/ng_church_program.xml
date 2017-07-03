@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <!--Service Type Form View-->
+        <record id="ng_church_program_form" model="ir.ui.view">
+            <field name='name'>ng_church_program_form_view</field>
+            <field name='model'>ng_church.program</field>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <form string="Service Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="parish_id" invisible="1"/>
+                            <field name="name"/>
+                            <field name="days"/>
+                        </group>
+                        <group/>
+                    </group>
+                    <group>
+                         <group>
+                             <label for="start"/>
+                             <div class="address_format">
+                                <field name="start" style="width:36%" widget="float_time"/>
+                                <field name="meridiem" style="width:23%"/>
+                             </div>
+                        </group>
+                        <group>
+                            <label for="end"/>
+                             <div class="address_format">
+                                <field name="end" style="width:38%" widget="float_time"/>
+                                <field name="meridiem" style="width:24%"/>
+                             </div>
+                        </group>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Service Type Tree View-->
+        <record id='ng_church_program_tree' model='ir.ui.view'>
+            <field name='name'>ng_church_program_tree_view</field>
+            <field name='model'>ng_church.program</field>
+            <field name='type'>tree</field>
+            <field name='arch' type='xml'>
+                <tree string='Service Type'>
+                    <field name="name"/>
+                    <field name='days'/>
+                    <field name="start"/>
+                    <field name="end"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

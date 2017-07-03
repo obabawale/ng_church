@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="pledge_report_reg"
+            name="ng_church.print_pledge_report"
+            model="ng_church.pledge_line"
+            file="ng_church.print_pledge_report"
+            report_type='qweb-pdf' auto="False"
+            string="Pledge Balance"/>
+
+         <report id="ng_church_pledges_report"
+             model="ng_church.pledge" string="Pledge Payments Report"
+             name="ng_church.church_pledges_report"
+             file="ng_church.church_pledges_report"
+             report_type="qweb-pdf"
+             menu="False" />
+
+        <report id="ng_church_attendance_line_report"
+            model="ng_church.attendance_line"
+            string="Church Services Attendance"
+            name="ng_church.church_attendance_report"
+            file="ng_church.church_attendance_report"
+            report_type="qweb-pdf"
+            menu="False" />
+
+        <report id="ng_church_tithe_line_report"
+            model="ng_church.tithe_lines"
+            string="Tithes Report"
+            name="ng_church.church_tithe_report"
+            file="ng_church.church_tithe_report"
+            report_type="qweb-pdf"
+            menu="False" />
+
+        <report id="ng_church_offering_report"
+            model="ng_church.offering"
+            string="Offering Report"
+            name="ng_church.church_offering_report"
+            file="ng_church.church_offering_report"
+            report_type="qweb-html"
+            menu="True" />
+
+    </data>
+</odoo>

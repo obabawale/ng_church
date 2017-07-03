@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="print_pledge_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <div class="container">
+                                <h3>Dear <t t-esc="o.pledger.name"/>, </h3>
+                                <p>
+                                    &#160; &#160; &#160; &#160; Thank you for your continued support to the development of the church of God.
+                                    Please note that the total amount due from your <t t-esc="o.pledge_id.name.name"/> pledge to the church of God is:
+                                    <b>#<t t-esc="o.balance"/></b>
+                                </p>
+                                <p> Thank you and God bless!</p>
+                                <p style="text-align:right"><em>Yours Faithfully</em></p>
+                                <p style="text-align:right"><t t-esc="user.company_id.phone"/></p>
+                                <p style="text-align:right"><t t-esc="user.company_id.email"/></p>
+                                <p style="text-align:right"><t t-esc="user.company_id.name"/></p>
+
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

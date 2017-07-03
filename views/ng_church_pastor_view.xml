@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="pastors_profile_tree_view" model="ir.ui.view">
+			<field name="name">List of All Minister</field>
+			<field name="model">ng_church.pastor</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="lastname"/>
+					<field name="pastor_hierarchy" widget="selection"/>
+					<field name="personal_email" widget="email"/>
+					<field name="personal_phone"/>
+					<field name="home_address" />
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- Pastor form view -->
+		<record model="ir.ui.view" id="minister_profile_view">
+			<field name="name">Minister Profile Form</field>
+			<field name="model">ng_church.pastor</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet string="pastor form">
+						<group>
+							<field name="type_of_minister" widget="radio" options="{'horizontal':true}" nolabel="1" class="oe_right"/>
+						</group>
+						<group>
+						    <field name="users_id"/>
+							<field name="name" placeholder="First Name"/>
+							<field name="lastname" placeholder="Last name"/>
+							<field name="lead_pastor"/>
+							<field name="pastor_hierarchy" attrs="{'invisible':[('type_of_minister', '=', 'minister')]}"/>
+							<field name="minister_hierarchy" attrs="{'invisible':[('type_of_minister', '=', 'pastor')]}"/>
+                            <field name="church_id"/>
+						</group>
+						<notebook>
+							<page string="Bio-Data" name="profile">
+								<group>
+									<field name="personal_email" placeholder="Personal email"/>
+									<field name="personal_phone" placeholder="Personal phone"/>
+									<field name="home_address" placeholder="Home Address"/>
+									<field name="date_of_birth" placeholder="Date of Birth"/>
+								</group>
+							</page>
+
+							<page string="Spiritual Data" name="spiritual_data">
+								<group>
+									<field name="is_born_again"/>
+									<field name="born_again_date" attrs="{'invisible':[('is_born_again', '=', False)]}"/>
+										<field name="is_spirit_filled"/>
+										<field name="spirit_filled_date" attrs="{'invisible':[('is_spirit_filled', '=', False)]}"/>
+
+								</group>
+							</page>
+
+						</notebook>
+					</sheet>
+				</form>
+
+			</field>
+		</record>
+	</data>
+</odoo>

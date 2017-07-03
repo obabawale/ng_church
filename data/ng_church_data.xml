@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!--Church Sections Data-->
+        <record id="church_section_1" model="church.sections">
+            <field name="name">Children Church</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="church_section_2" model="church.sections">
+            <field name="name">Teenagers</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="church_section_3" model="church.sections">
+            <field name="name">Youth Church</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="church_section_4" model="church.sections">
+            <field name="name">Adult Church</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+
+        <!--Membership Category Data-->
+        <record id="membership_category_1" model="membership.category">
+            <field name="name">Toddlers</field>
+            <field name="start_age">1</field>
+            <field name="end_age">5</field>
+        </record>
+
+        <record id="membership_category_2" model="membership.category">
+            <field name="name">Juniors</field>
+            <field name="start_age">6</field>
+            <field name="end_age">8</field>
+        </record>
+
+        <record id="membership_category_3" model="membership.category">
+            <field name="name">Children</field>
+            <field name="start_age">9</field>
+            <field name="end_age">12</field>
+        </record>
+
+        <record id="membership_category_4" model="membership.category">
+            <field name="name">Teenagers</field>
+            <field name="start_age">13</field>
+            <field name="end_age">17</field>
+        </record>
+
+        <record id="membership_category_5" model="membership.category">
+            <field name="name">Adults</field>
+            <field name="start_age">18</field>
+            <field name="end_age">50</field>
+        </record>
+
+        <!--Membership Type Data-->
+        <record id="membership_type_1" model="membership.type">
+            <field name="name">Ordinary Members</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="membership_type_2" model="membership.type">
+            <field name="name">Workers</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="membership_type_3" model="membership.type">
+            <field name="name">Ministers</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="membership_type_4" model="membership.type">
+            <field name="name">Pastors</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <!--Membership Status Data-->
+        <record id="membership_status_1" model="membership.status">
+            <field name="name">First Timers</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <record id="membership_status_2" model="membership.status">
+            <field name="name">Full Members</field>
+            <field name="code"></field>
+            <field name="notes"></field>
+        </record>
+
+        <!--Fellowship Data-->
+        <record id="fellowship_1" model="fellowship">
+            <field name="name">Youth Fellowship</field>
+            <field name="marital_status">single</field>
+            <field name="gender"></field>
+        </record>
+
+        <record id="fellowship_2" model="fellowship">
+            <field name="name">Excellent Men</field>
+            <field name="marital_status">married</field>
+            <field name="gender">male</field>
+        </record>
+
+        <record id="fellowship_3" model="fellowship">
+            <field name="name">Good Women</field>
+            <field name="marital_status">married</field>
+            <field name="gender">female</field>
+        </record>
+    </data>
+</odoo>
