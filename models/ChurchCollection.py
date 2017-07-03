@@ -224,6 +224,7 @@ class OfferingLine(models.Model):
     is_invoiced = fields.Boolean(string='Invoiced')
     amount = fields.Float(string='Amount')
     offering_id = fields.Many2one('ng_church.offering', string='Offering')
+    church_id = fields.Many2one('res.company', default=parish)
 
     @api.constrains('amount')
     def _check_valid_amount(self):

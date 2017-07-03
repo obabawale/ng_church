@@ -30,7 +30,7 @@ class ChurchTitheLineAbstractModel(models.AbstractModel):
         return report_obj.render(name, docargs)
 
 
-class TitheReportWizard(models.Model):
+class OfferingReportWizard(models.Model):
     """."""
 
     _name = 'ng_church.offering_wizard'
@@ -55,11 +55,13 @@ class TitheReportWizard(models.Model):
 
     def check_report(self):
         """."""
-        query = self.offering.id
-        # church = ('church_id', '=', self.env.user.company_id.id)
-        domain = [('service_id', '=', query)]
-        offerings = self._report_range(self.env['ng_church.offering_line'].search(
-            domain), self.date_from, self.date_to)
+        query = self.offering
+        church = ('church_id', '=', self.env.user.company_id.id)
+        services = self.env['ng_church.offering'].search([('service_id', '=', query.id), church])
+        offering_line = self.env['ng_church.offering_line']
+        for offering in services:
+            offering_line += offering_line.search([('offering_id', '=', offering.id), church])
+        offerings = self._report_range(offering_line, self.date_from, self.date_to)
         if len(offerings) > 0:
             return self.env['report'].get_action(offerings, 'ng_church.church_offering_report')
         raise MissingError('Record not found')

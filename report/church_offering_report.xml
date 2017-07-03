@@ -3,33 +3,33 @@
     <data>
         <template id="church_offering_report">
             <t t-call="report.html_container">
-                <t t-foreach="docs" t-as="doc">
+                <t t-foreach="docs[0]" t-as="doc">
                     <t t-call="report.external_layout">
                         <div class="page">
-                            <h2 class="text-center" style="text-transform:uppercase">Church Offering REPORT</h2>
-                            <!-- <h5 class="text-center" style="text-transform:uppercase"><u><span t-field="user.company_id"/></u></h5>
+                            <h2 class="text-center" style="text-transform:uppercase">Offering REPORT</h2>
+                            <h5 class="text-center" style="text-transform:uppercase"><u><span t-field="doc.offering_id.service_id.name"/></u></h5>
                             <table class="table table-condensed">
                                <tr class="row">
                                    <td>Date</td>
-                                   <td>Category</td>
-                                   <td>Name</td>
+                                   <td></td>
+                                   <td></td>
                                    <td>Amount</td>
                                </tr>
-                               <t t-foreach="docs" t-as="tithes">
+                                <t t-foreach="docs" t-as="offering">
                                     <tr class="row">
-                                        <td><span t-field="tithes.date"/></td>
-                                        <td><span t-field="tithes.tithe_type"/></td>
-                                        <td><span t-field="tithes.tither"/></td>
-                                        <td><span t-field="tithes.amount"/></td>
+                                        <td><span t-field="offering.date"/></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><span t-field="offering.amount"/></td>
                                     </tr>
                                </t>
-                                   <tr class="row">
+                                  <tr class="row">
                                        <td></td>
                                        <td></td>
                                        <td><b>Total</b></td>
-                                       <td><b t-esc="tithe_caculator(docs)"/></td>
+                                       <td><b t-esc="offering_caculator(docs)"/></td>
                                    </tr>
-                            </table> -->
+                            </table>
                         </div>
                     </t>
                 </t>
