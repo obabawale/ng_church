@@ -36,8 +36,16 @@
             string="Offering Report"
             name="ng_church.church_offering_report"
             file="ng_church.church_offering_report"
-            report_type="qweb-html"
-            menu="True" />
+            report_type="qweb-pdf"
+            menu="False" />
+
+        <report id="ng_church_donation_report"
+                model="ng_church.donation"
+                string="Donation Report"
+                name="ng_church.church_donation_report"
+                file="ng_church.church_donation_report"
+                report_type="qweb-html"
+                menu="False" />
 
     </data>
 </odoo>

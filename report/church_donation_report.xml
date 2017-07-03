@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="church_donation_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs[0]" t-as="doc">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h2 class="text-center" style="text-transform:uppercase">DONATION REPORT</h2>
+                            <h5 class="text-center" style="text-transform:uppercase"><u><span t-field="doc.donation_id.name"/></u></h5>
+                            <table class="table table-condensed">
+                               <tr class="row">
+                                   <td>Date</td>
+                                   <td>Donor</td>
+                                   <td></td>
+                                   <td>Amount</td>
+                               </tr>
+                                <t t-foreach="docs" t-as="donation">
+                                    <tr class="row">
+                                        <td><span t-field="donation.name"/></td>
+                                        <td><span t-field="donation.donor_id"/></td>
+                                        <td></td>
+                                        <td><span t-field="donation.amount"/></td>
+                                    </tr>
+                               </t>
+                                  <tr class="row">
+                                       <td></td>
+                                       <td></td>
+                                       <td><b>Total</b></td>
+                                       <td><b t-esc="donation_caculator(docs)"/></td>
+                                   </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -2,12 +2,19 @@
 <odoo>
 	<data>
 
+		<record id="ng_church_donation_report_action" model="ir.actions.act_window">
+            <field name="name">Donation</field>
+            <field name="res_model">ng_church.donation_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
 		<record id="ng_church_offering_report_action" model="ir.actions.act_window">
             <field name="name">Offering</field>
             <field name="res_model">ng_church.offering_wizard</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
-			<!-- <field name="view_id" ref="ng_church_offering_wizard"/> -->
             <field name="target">new</field>
         </record>
 
@@ -16,7 +23,6 @@
             <field name="res_model">ng_church.tithe_wizard</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
-			<!-- <field name="view_id" ref="ng_church_tithe_wizard"/> -->
             <field name="target">new</field>
         </record>
 

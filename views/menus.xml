@@ -55,7 +55,7 @@
 		<menuitem id="ng_church_offering_menu" name="Offering" parent="church_collection_main_menu"
 				action="ng_church_offering_action"/>
 				<!--Church Donation Menu--><!--4/5-->
-	    <menuitem id="ng_church_donation_menu" name="Donations" parent="church_collection_main_menu"
+	    <menuitem id="ng_church_donation_menu" name="Donation" parent="church_collection_main_menu"
 			action="ng_church_donation_action"/>
 
 		<menuitem id="ng_church_pledges_menu" name="Pledges" parent="church_collection_main_menu"
@@ -84,7 +84,7 @@
 		<menuitem id="ng_church_collection_report" name="Church Collections" parent="ng_church_reporting_menu"/>
         <menuitem id="church_tithe_report_menu" name="Tithes" parent="ng_church_collection_report" action="ng_church_tithe_report_action"/>
 		<menuitem id="church_offering_report_menu" name="Offering" parent="ng_church_collection_report" action="ng_church_offering_report_action"/>
-		<menuitem id="church_donation_report_menu" name="Donation" parent="ng_church_collection_report" action="ng_church_pledge_report_action"/>
+		<menuitem id="church_donation_report_menu" name="Donation" parent="ng_church_collection_report" action="ng_church_donation_report_action"/>
 		<menuitem id="church_pledge_report_menu" name="Pledge" parent="ng_church_collection_report" action="ng_church_pledge_report_action"/>
         <!--Training Main Menu-->
         <menuitem id="campaign_growth_main_menu" name="Church Growth" parent="church_main_menu"/>

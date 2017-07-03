@@ -38,6 +38,7 @@ deserunt mollit anim id est laborum
             'report/church_attendance_report.xml',
             'report/church_tithe_report.xml',
             'report/church_offering_report.xml',
+            'report/church_donation_report.xml',
             'views/ng_church_program.xml',
             'views/ng_church_lodgement.xml'
     ],

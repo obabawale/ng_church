@@ -42,6 +42,7 @@ class DonationLine(models.Model):
     amount = fields.Float(string='Amount', required=True)
     is_invoiced = fields.Boolean(string='Invoiced', readonly=True)
     notes = fields.Char(related='donation_id.name.name')
+    church_id = fields.Many2one('res.company', default=parish)
 
     @api.constrains('amount')
     def _check_valid_amount(self):

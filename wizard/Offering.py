@@ -6,8 +6,8 @@ from odoo import api, fields, models
 from odoo.exceptions import MissingError, UserError
 
 
-class ChurchTitheLineAbstractModel(models.AbstractModel):
-    """Church TitheLine Abstract Model."""
+class ChurchOfferingLineAbstractModel(models.AbstractModel):
+    """Church OfferingLine Abstract Model."""
 
     _name = 'report.ng_church.church_offering_report'
 
