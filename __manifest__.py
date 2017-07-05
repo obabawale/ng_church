@@ -25,6 +25,7 @@ deserunt mollit anim id est laborum
             'views/membership_view.xml',
             'views/inherited/account_invoice_view.xml',
             'views/inherited/res_company_view.xml',
+            'views/inherited/project.xml',
             'data/ng_church_data.xml',
             'data/member_sequence.xml',
             'wizard/ng_church_collections_wizard_view.xml',

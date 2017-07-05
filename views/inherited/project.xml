@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="inherited_project_view_form">
+            <field name="name">inherited_project_view_form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div/div/div" position="inside">
+                    <field name="x_date"/>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

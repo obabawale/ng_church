@@ -2,6 +2,7 @@
 """Church Collections consists of all church weekly or monthly collections."""
 import datetime
 from helper import parish
+from helper import program_default_date_tithe
 
 from odoo import api
 from odoo import fields
@@ -23,7 +24,7 @@ class Donation(models.Model):
     _name = 'ng_church.donation'
 
     name = fields.Many2one('project.project', 'Project')
-    start_date = fields.Date(string='Start Date')
+    start_date = fields.Date(related='name.x_date', string='Start Date')
     notes = fields.Text(string='Note')
     church_id = fields.Many2one('res.company', default=parish)
     donation_line_ids = fields.One2many(
@@ -120,6 +121,12 @@ class Tithe(models.Model):
     church_id = fields.Many2one('res.company', string='Church\'s Tithe', default=parish)
     is_pastor_tithe = fields.Boolean(string='Minister\'s Tithe')
     tithe_line_ids = fields.One2many('ng_church.tithe_lines', 'tithe_id', string='Tithes')
+    date = fields.Date(string='Date')
+
+    @api.onchange('service_id')
+    def _onchange_name(self):
+        date = program_default_date_tithe(self)
+        self.date = date
 
 
 class TitheLine(models.Model):
@@ -286,7 +293,7 @@ class Pledge(models.Model):
     _name = 'ng_church.pledge'
 
     name = fields.Many2one('project.project', string='Project')
-    date = fields.Date(string='Date')
+    date = fields.Date(related='name.x_date', string='Date')
     church_id = fields.Many2one('res.company', default=parish)
     pledge_line_ids = fields.One2many('ng_church.pledge_line', 'pledge_id', string='Pledges')
 
@@ -298,9 +305,8 @@ class PledgeLine(models.Model):
 
     name = fields.Char(string='Name', related='pledge_id.name.name')
     date = fields.Date(string='Date')
-    due = fields.Date(string='Due Date')
     pledger = fields.Many2one('ng_church.associate', string='Pledger')
-    amount = fields.Float(string='Amount')
+    amount = fields.Float(string='Pledged Amount')
     balance = fields.Float(string='Balance', compute='_compute_balance', store=True)
     paid = fields.Float(string='Paid', compute='_compute_total_paid', store=True)
     is_invoiced = fields.Char(string='Invoiced', default=False)

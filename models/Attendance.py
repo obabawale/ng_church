@@ -5,6 +5,8 @@ from odoo import api
 from odoo import fields
 from odoo import models
 from helper import parish
+from helper import program_default_date
+from helper import default_date
 
 
 class ProgramAttendance(models.Model):
@@ -18,11 +20,16 @@ class ProgramAttendance(models.Model):
     attendance_line_ids = fields.One2many(
         'ng_church.attendance_line', 'attendance_id', string='Program Attendance')
 
+    @api.onchange('name')
+    def _onchange_name(self):
+        date = program_default_date(self)
+        self.date = date
+
     class AttendanceLine(models.Model):
         """."""
 
         _name = 'ng_church.attendance_line'
-        date = fields.Date(string='Date')
+        date = fields.Date(string='Date', default=default_date)
         name = fields.Char(string='Name')
         male = fields.Integer(string='Male')
         female = fields.Integer(string='Female')

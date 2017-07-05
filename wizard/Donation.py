@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Church donation report wizard."""
-
+from helper import _report_range
 import datetime
 from odoo import api, fields, models
-from odoo.exceptions import MissingError, UserError
+from odoo.exceptions import MissingError
 
 
 class ChurchDonationLineAbstractModel(models.AbstractModel):
@@ -40,25 +40,11 @@ class DonationReportWizard(models.Model):
         string='Date to', default=lambda self: datetime.datetime.now().strftime('%Y-%m-%d'))
     donation = fields.Many2one('ng_church.donation', required=True)
 
-    def _report_range(self, model, after, before):
-        if after > before:
-            raise UserError('Date from is ahead of date to')
-        if after and before:
-            model = model.filtered(lambda r: r.date >= after)
-            model = model.filtered(lambda r: r.date <= before)
-            return model
-        elif after:
-            model = model.filtered(lambda r: r.date >= after)
-            return model
-        model = model.filtered(lambda r: r.date <= before)
-        return model
-
     def check_report(self):
         """."""
         church = [('church_id', '=', self.env.user.company_id.id), ('id', '=', self.donation.id)]
         donation = self.donation.search(church).donation_line_ids
-        print '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', donation
-        donations = self._report_range(donation, self.date_from, self.date_to)
+        donations = _report_range(donation, self.date_from, self.date_to)
         if len(donations) > 0:
             return self.env['report'].get_action(donations, 'ng_church.church_donation_report')
         raise MissingError('Record not found')

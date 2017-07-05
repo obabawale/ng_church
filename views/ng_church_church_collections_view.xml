@@ -66,7 +66,6 @@
                      <group>
                          <group>
                              <field name="date"/>
-                             <field name="due"/>
                          </group>
                          <group>
                              <field name="pledger"/>
@@ -96,7 +95,7 @@
                              <field name="name"/>
                          </group>
                          <group>
-                             <field name="date"/>
+                             <field name="date" readonly="1"/>
                          </group>
                      </group>
                      <notebook>
@@ -207,9 +206,12 @@
                             <group>
                                 <field name="name" readonly="1"/>
                                 <field name="service_id"/>
-                                <field name="section_id"/>
                             </group>
-                    </group>
+                            <group>
+                                <field name="section_id"/>
+                                <field name="date"/>
+                            </group>
+                         </group>
                     <notebook>
                         <page string="Church Tithes">
                             <field name="tithe_line_ids"/>
@@ -226,10 +228,9 @@
             <field name="model">ng_church.tithe</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
+                    <field name="date"/>
                     <field name="section_id"/>
                     <field name="service_id"/>
-                    <field name="pastor_id"/>
                 </tree>
             </field>
         </record>
@@ -339,7 +340,7 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="start_date"/>
+                            <field name="start_date" readonly="1"/>
                         </group>
                         <group>
                             <field name="notes"/>
