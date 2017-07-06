@@ -55,6 +55,18 @@
 			</field>
 		</record>
 
+		<record id="ng_church_first_timer_followup_action" model="ir.actions.act_window">
+			<field name="name">Follow Up</field>
+			<field name="res_model">ng_church.followup</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Follow up
+				</p>
+			</field>
+		</record>
+
 		<record id="ng_church_pastor_action" model="ir.actions.act_window">
 			<field name="name">Ministers</field>
 			<field name="res_model">ng_church.pastor</field>

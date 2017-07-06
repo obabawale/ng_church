@@ -209,7 +209,7 @@
                             </group>
                             <group>
                                 <field name="section_id"/>
-                                <field name="date"/>
+                                <!-- <field name="date"/> -->
                             </group>
                          </group>
                     <notebook>
@@ -228,7 +228,7 @@
             <field name="model">ng_church.tithe</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="date"/>
+                    <!-- <field name="date"/> -->
                     <field name="section_id"/>
                     <field name="service_id"/>
                 </tree>

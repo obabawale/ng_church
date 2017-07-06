@@ -27,3 +27,4 @@ import ChurchProgram
 import Attendance
 import ChurchCollection
 import Lodgement
+import Followup

@@ -121,12 +121,12 @@ class Tithe(models.Model):
     church_id = fields.Many2one('res.company', string='Church\'s Tithe', default=parish)
     is_pastor_tithe = fields.Boolean(string='Minister\'s Tithe')
     tithe_line_ids = fields.One2many('ng_church.tithe_lines', 'tithe_id', string='Tithes')
-    date = fields.Date(string='Date')
-
-    @api.onchange('service_id')
-    def _onchange_name(self):
-        date = program_default_date_tithe(self)
-        self.date = date
+    # date = fields.Date(string='Date')
+    #
+    # @api.onchange('service_id')
+    # def _onchange_name(self):
+    #     date = program_default_date_tithe(self)
+    #     self.date = date
 
 
 class TitheLine(models.Model):
@@ -134,7 +134,7 @@ class TitheLine(models.Model):
 
     _name = 'ng_church.tithe_lines'
 
-    date = fields.Date(string='Date')
+    date = fields.Date(string='Date', required=True)
     name = fields.Char(string='Date')
     tithe_type = fields.Selection(
         selection=[('members', 'Members'), ('pastor', 'Pastor'), ('minister', 'Minister')], string='Category', default='members')
@@ -227,7 +227,7 @@ class OfferingLine(models.Model):
 
     _name = 'ng_church.offering_line'
 
-    date = fields.Date(string='Date')
+    date = fields.Date(string='Date', required=True)
     name = fields.Char(string='Date')
     is_invoiced = fields.Boolean(string='Invoiced')
     amount = fields.Float(string='Amount')
@@ -304,7 +304,7 @@ class PledgeLine(models.Model):
     _name = 'ng_church.pledge_line'
 
     name = fields.Char(string='Name', related='pledge_id.name.name')
-    date = fields.Date(string='Date')
+    date = fields.Date(string='Date', required=True)
     pledger = fields.Many2one('ng_church.associate', string='Pledger')
     amount = fields.Float(string='Pledged Amount')
     balance = fields.Float(string='Balance', compute='_compute_balance', store=True)
@@ -425,7 +425,7 @@ class PledgeLinePayment(models.Model):
     """."""
 
     _name = 'ng_church.pledge_line_payment'
-    date = fields.Date(string='Date')
+    date = fields.Date(string='Date', required=True)
     amount = fields.Float(string='Amount')
     pledge_line_id = fields.Many2one('ng_church.pledge_line')
 

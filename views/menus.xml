@@ -80,17 +80,25 @@
 
         <!--Odoo Church Reporting Menu-->
         <menuitem id="ng_church_reporting_menu" name="Reporting" parent="church_main_menu"/>
-		<menuitem id="ng_church_attendance_report" name="Attendance" parent="ng_church_reporting_menu" action="ng_church_attendance_report_action"/>
-		<menuitem id="ng_church_collection_report" name="Church Collections" parent="ng_church_reporting_menu"/>
-        <menuitem id="church_tithe_report_menu" name="Tithes" parent="ng_church_collection_report" action="ng_church_tithe_report_action"/>
-		<menuitem id="church_offering_report_menu" name="Offering" parent="ng_church_collection_report" action="ng_church_offering_report_action"/>
-		<menuitem id="church_donation_report_menu" name="Donation" parent="ng_church_collection_report" action="ng_church_donation_report_action"/>
-		<menuitem id="church_pledge_report_menu" name="Pledge" parent="ng_church_collection_report" action="ng_church_pledge_report_action"/>
+		<menuitem id="ng_church_attendance_report" name="Attendance" parent="ng_church_reporting_menu"
+			action="ng_church_attendance_report_action"/>
+		<menuitem id="ng_church_collection_report" name="Church Collections"
+			parent="ng_church_reporting_menu"/>
+        <menuitem id="church_tithe_report_menu" name="Tithes" parent="ng_church_collection_report"
+			action="ng_church_tithe_report_action"/>
+		<menuitem id="church_offering_report_menu" name="Offering" parent="ng_church_collection_report"
+			action="ng_church_offering_report_action"/>
+		<menuitem id="church_donation_report_menu" name="Donation" parent="ng_church_collection_report"
+			action="ng_church_donation_report_action"/>
+		<menuitem id="church_pledge_report_menu" name="Pledge" parent="ng_church_collection_report"
+			action="ng_church_pledge_report_action"/>
         <!--Training Main Menu-->
-        <menuitem id="campaign_growth_main_menu" name="Church Growth" parent="church_main_menu"/>
+        <menuitem id="ng_church_growth_main_menu" name="Church Growth" parent="church_main_menu"/>
         <!--Training Sub Menu-->
-        <menuitem id="training_sub_menu" name="Events" parent="campaign_growth_main_menu" action="event.action_event_view" sequence="1"/>
-        <menuitem id="training_registration_menu" name="Events Registration" parent="campaign_growth_main_menu" sequence="2" action="event.action_registration"/>
+        <menuitem id="training_sub_menu" name="Events" parent="ng_church_growth_main_menu"
+			action="event.action_event_view" sequence="1"/>
+        <menuitem id="training_registration_menu" name="Events Registration" parent="ng_church_growth_main_menu" sequence="2"
+			action="event.action_registration"/>
 
         <!--Church Events Configuration Menu-->
         <menuitem id="church_event_config_main_menu" name="Church Events" parent="church_config_menu"/>
@@ -103,19 +111,19 @@
         <!--Church Growth Main Menu-->
 
         <!--Followup Menu-->
-        <menuitem id="followup_menu"
-                  name="Followup"
-                  parent="campaign_growth_main_menu"
-                  action="marketing_campaign.action_marketing_campaign_workitem"/>
+        <menuitem id="ng_church_followup_menu"
+                  name="Follow Up"
+                  parent="ng_church_growth_main_menu"
+                  action="ng_church_first_timer_followup_action"/>
         <!--Growth Segment Menu-->
         <menuitem id="growth_segment_menu"
                   name="Growth Segment"
-                  parent="campaign_growth_main_menu"
+                  parent="ng_church_growth_main_menu"
                   action="marketing_campaign.action_marketing_campaign_segment_form"/>
         <!--Growth Campaign Menu-->
         <menuitem id="growth_campaign_menu"
                   name="Growth Campaign"
-                  parent="campaign_growth_main_menu"
+                  parent="ng_church_growth_main_menu"
                   action="marketing_campaign.action_marketing_campaign_form"/>
 
 	</data>
