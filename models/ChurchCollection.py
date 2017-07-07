@@ -2,7 +2,6 @@
 """Church Collections consists of all church weekly or monthly collections."""
 import datetime
 from helper import parish
-from helper import program_default_date_tithe
 
 from odoo import api
 from odoo import fields
@@ -23,7 +22,7 @@ class Donation(models.Model):
 
     _name = 'ng_church.donation'
 
-    name = fields.Many2one('project.project', 'Project')
+    name = fields.Many2one('project.project', 'Project', required=True)
     start_date = fields.Date(related='name.x_date', string='Start Date')
     notes = fields.Text(string='Note')
     church_id = fields.Many2one('res.company', default=parish)
@@ -40,7 +39,7 @@ class DonationLine(models.Model):
     name = fields.Char(string='Date')
     date = fields.Date(string='Date', required=True)
     donor_id = fields.Many2one('res.partner', string='Donor')
-    amount = fields.Float(string='Amount', required=True)
+    amount = fields.Float(string='Donated Amount', required=True)
     is_invoiced = fields.Boolean(string='Invoiced', readonly=True)
     notes = fields.Char(related='donation_id.name.name')
     church_id = fields.Many2one('res.company', default=parish)
@@ -292,7 +291,7 @@ class Pledge(models.Model):
 
     _name = 'ng_church.pledge'
 
-    name = fields.Many2one('project.project', string='Project')
+    name = fields.Many2one('project.project', string='Project', required=True)
     date = fields.Date(related='name.x_date', string='Date')
     church_id = fields.Many2one('res.company', default=parish)
     pledge_line_ids = fields.One2many('ng_church.pledge_line', 'pledge_id', string='Pledges')
@@ -304,7 +303,7 @@ class PledgeLine(models.Model):
     _name = 'ng_church.pledge_line'
 
     name = fields.Char(string='Name', related='pledge_id.name.name')
-    date = fields.Date(string='Date', required=True)
+    date = fields.Date(string='Pledged Date', required=True)
     pledger = fields.Many2one('ng_church.associate', string='Pledger')
     amount = fields.Float(string='Pledged Amount')
     balance = fields.Float(string='Balance', compute='_compute_balance', store=True)

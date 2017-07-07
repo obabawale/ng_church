@@ -111,10 +111,17 @@
         <!--Church Growth Main Menu-->
 
         <!--Followup Menu-->
-        <menuitem id="ng_church_followup_menu"
-                  name="Follow Up"
-                  parent="ng_church_growth_main_menu"
-                  action="ng_church_first_timer_followup_action"/>
+        <menuitem id="ng_church_followup_menu" name="Follow Up" parent="ng_church_growth_main_menu"/>
+
+		<menuitem id="ng_church_first_timer_followup_menu"
+			  			  name="First Timers"
+			  			  parent="ng_church_followup_menu"
+			  			  action="ng_church_first_timer_followup_action"/>
+
+		<menuitem id="ng_church_member_timer_followup_menu"
+ 				 			  			  name="Members"
+ 				 			  			  parent="ng_church_followup_menu"
+ 				 			  			  action="ng_church_first_timer_followup_action"/>
         <!--Growth Segment Menu-->
         <menuitem id="growth_segment_menu"
                   name="Growth Segment"
