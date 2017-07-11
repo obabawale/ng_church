@@ -1,0 +1,207 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="ng_church_followup_member_kanban_view" model="ir.ui.view">
+            <field name="name">ng_church_followup_member_kanban_view</field>
+            <field name="model">ng_church.followup_member</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" class="o_kanban_small_column" quick_create="0">
+                    <field name="stage_id"/>
+                    <field name="color"/>
+
+                    <field name="name"/>
+                    <field name="phone" />
+                    <field name="email" />
+                    <field name="next_activity_id"/>
+                    <field name="date_action"/>
+                    <field name="priority"/>
+                    <field name="kanban_state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card" t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_global_click">
+                                <div class="oe_kanban_content">
+                                    <h3>
+                                        <a type="open">
+                                            <b style="color:green">
+                                                <field name="next_activity_id"/> :
+                                            </b>
+                                            <field name="name" />
+                                         </a>
+                                    </h3>
+                                        <p style="text-align: left;">
+                                            <field name="date_action"/>
+                                            <br/>
+                                            <field name="phone" />
+                                            <br/>
+                                            <field name="email" />
+                                        </p>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <!-- <field name="kanban_state" class="oe_inline" widget="kanban_state_selection"/> -->
+                                    <a name="%(ng_church.ng_church_follow_up_log_action)d" type="action" t-if="record.kanban_state.raw_value !='grey'">
+                                        <span t-att-title="record.date_action.value + ': '+record.next_activity_id.value +' '+record.name.value"
+                                            t-attf-class="oe_kanban_status oe_kanban_status_#{record.kanban_state.raw_value}"/>
+                                    </a>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="ng_church_followup_first_timer_kanban_view" model="ir.ui.view">
+            <field name="name">ng_church.followup_first_timer.kanban</field>
+            <field name="model">ng_church.followup_first_timer</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" class="o_kanban_small_column" quick_create="0">
+                    <field name="stage_id"/>
+                    <field name="color"/>
+
+                    <field name="name"/>
+                    <field name="phone" />
+                    <field name="email" />
+                    <field name="next_activity_id"/>
+                    <field name="date_action"/>
+                    <field name="priority"/>
+                    <field name="kanban_state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card" t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_global_click">
+                                <div class="oe_kanban_content">
+
+                                    <h3>
+                                        <a type="open">
+                                            <b style="color:green">
+                                                <field name="next_activity_id"/> :
+                                            </b>
+                                            <field name="name" />
+                                         </a>
+                                    </h3>
+                                        <p style="text-align: left;">
+                                            <field name="date_action"/>
+                                            <br/>
+                                            <field name="phone" />
+                                            <br/>
+                                            <field name="email" />
+                                        </p>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <!-- <field name="kanban_state" class="oe_inline" widget="kanban_state_selection"/> -->
+                                    <a name="%(ng_church.ng_church_follow_up_log_action)d" type="action" t-if="record.kanban_state.raw_value !='grey'">
+                                        <span t-att-title="record.date_action.value + ': '+record.next_activity_id.value +' '+record.name.value"
+                                            t-attf-class="oe_kanban_status oe_kanban_status_#{record.kanban_state.raw_value}"/>
+                                    </a>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record id="ng_church_followup_first_timer_tree_view" model="ir.ui.view">
+            <field name="name">ng_church.followup_first_timer.tree</field>
+            <field name="model">ng_church.followup_first_timer</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="name"/>
+                    <field name="phone" />
+                    <field name="email" />
+                    <field name="next_activity_id"/>
+                    <field name="date_action"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ng_church_followup_first_timer_form_view" model="ir.ui.view">
+            <field name="name">ng_church.followup_first_timer.form</field>
+            <field name="model">ng_church.followup_first_timer</field>
+            <field name="arch" type="xml">
+                <form string="Followup">
+                    <header>
+                        <field name="stage_id" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="phone" />
+                                <field name="email" />
+                            </group>
+                            <group>
+                                <field name="next_activity_id"/>
+                                <field name="date_action" attrs="{'invisible': [('next_activity_id', '=', False)]}" placeholder="Choose a date..."/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ng_church_followup_member_stage_form_view" model="ir.ui.view">
+            <field name="name">ng_church.followup_member_stage.form</field>
+            <field name="model">ng_church.followup_member</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="stage_id" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="phone" />
+                                <field name="email" />
+                            </group>
+                            <group>
+                                <field name="next_activity_id"/>
+                                <field name="date_action" attrs="{'invisible': [('next_activity_id', '=', False)]}" placeholder="Choose a date..."/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="ng_church_follow_up_activity_log" model="ir.ui.view">
+            <field name="name">ng_church_follow_up_activity_log</field>
+            <field name="model">ng_church.followup_log</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="activity_id"/>
+                        </group>
+                        <group>
+                            <field name="summary"/>
+                        </group>
+                        <field name="note" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="log_and_schedule" string="Log &#38; Schedule Next" type="object" class="oe_highlight"/>
+                        <button name="log" string="Log Only" type="object" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

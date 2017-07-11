@@ -2,12 +2,6 @@
 <odoo>
     <data noupdate="1">
 
-        <!--Church Sections Data-->
-        <record id="ng_church_default_stage" model="ng_church.stage">
-            <field name="name">new</field>
-        </record>
-
-
         <record id="church_section_1" model="church.sections">
             <field name="name">Children Church</field>
             <field name="code"></field>
