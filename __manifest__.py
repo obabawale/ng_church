@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Church Management',
-    'version': '0.1',
+    'version': '13.0.1.0.1',
     'author': 'Matt \'O Bell',
     'website': 'www.mattobell.com',
     'summary': """
@@ -58,6 +58,6 @@ deserunt mollit anim id est laborum
     ],
     'category': 'Human Resources',
     'application': True,
-    'installable': True,
+    'installable': False,
     'auto_install': False
 }
